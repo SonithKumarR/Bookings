@@ -13,6 +13,8 @@ import com.example.Bookings.Requests.BookTicketRequest;
 import com.example.Bookings.Responses.TicketResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -76,21 +78,24 @@ public class TicketService {
         //5. Save the ticket into DB and return Ticket Entity (Ticket Response)
         return  ticket.getTicketId();
     }
-    public TicketResponse generateTicket(String ticketId){
-        Ticket ticket = ticketRepository.findById(ticketId)
-                .orElseThrow(() -> new RuntimeException("Ticket not found by id " + ticketId));
+    public List<TicketResponse> generateTicket(String Email){
+        List<Ticket> ticketList = ticketRepository.findByEmailId(Email);//.get();//orElseThrow(() -> new RuntimeException("Ticket not found by id " + Email));
 
 // Creating a TicketResponse object manually
-        TicketResponse ticketResponse = new TicketResponse();
-        ticketResponse.setMovieName(ticket.getMovieName());
-        ticketResponse.setTheaterName(ticket.getTheaterName());
-        ticketResponse.setShowTime(ticket.getShowTime());
-        ticketResponse.setBookedSeats(ticket.getBookedSeats());
-        ticketResponse.setTotalAmount(ticket.getTotalAmount());
-        ticketResponse.setShowDate(ticket.getShowDate());
+        List<TicketResponse> ticketResponseList = new ArrayList<>();
+        for(Ticket ticket:ticketList){
+            TicketResponse ticketResponse = new TicketResponse();
+            ticketResponse.setMovieName(ticket.getMovieName());
+            ticketResponse.setTheaterName(ticket.getTheaterName());
+            ticketResponse.setShowTime(ticket.getShowTime());
+            ticketResponse.setBookedSeats(ticket.getBookedSeats());
+            ticketResponse.setTotalAmount(ticket.getTotalAmount());
+            ticketResponse.setShowDate(ticket.getShowDate());
+            ticketResponseList.add(ticketResponse);
+        }
 
 // Return the ticket response
-        return ticketResponse;
+        return ticketResponseList;
 
     }
 }

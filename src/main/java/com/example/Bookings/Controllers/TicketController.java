@@ -4,7 +4,11 @@ import com.example.Bookings.Requests.BookTicketRequest;
 import com.example.Bookings.Responses.TicketResponse;
 import com.example.Bookings.Services.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @CrossOrigin(origins = "*")
 @RestController
@@ -19,7 +23,8 @@ public class TicketController {
     }
 
     @GetMapping  //Taking the stored data from DB
-    public TicketResponse generateTicket(@RequestParam("ticketId") String ticketId){
-        return ticketService.generateTicket(ticketId);
+    public ResponseEntity<?> generateTicket(@RequestParam("Email") String Email){
+        List<TicketResponse> ticketResponseList =  ticketService.generateTicket(Email);
+        return ResponseEntity.status(HttpStatus.OK).body(ticketResponseList);
     }
 }
