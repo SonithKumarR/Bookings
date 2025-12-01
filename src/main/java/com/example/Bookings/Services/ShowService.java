@@ -80,12 +80,14 @@ public class ShowService {
             showResponse.setTheaterName(shows.getTheaterName());
             showResponse.setMovieName(shows.getMovieName());
             showResponse.setTheaterId(shows.getTheater().getTheaterId());
+            showResponse.setShowId(shows.getShowId());
             showResponseList.add(showResponse);
         }
         return showResponseList;
     }
-    public List<ShowSeatResponse> getSeatsById(int showId){
-        List<ShowSeat> showSeatList = showSeatRepository.findByShows_ShowId(showId);
+    public List<ShowSeatResponse> getSeatsById(String showId){
+    	int showId1= Integer.parseInt(showId);
+        List<ShowSeat> showSeatList = showSeatRepository.findByShows_ShowId(showId1);
         List<ShowSeatResponse> showSeatResponseList = new ArrayList<>();
         for(ShowSeat showSeat:showSeatList){
             ShowSeatResponse showSeatResponse = new ShowSeatResponse();
@@ -107,6 +109,7 @@ public class ShowService {
             showResponse.setTheaterName(shows.getTheaterName());
             showResponse.setMovieName(shows.getMovieName());
             showResponse.setTheaterId(shows.getTheater().getTheaterId());
+            showResponse.setShowId(shows.getShowId());
             showResponseList.add(showResponse);
         }
         return showResponseList;

@@ -10,17 +10,29 @@ public class ShowResponse {
     private String movieName;
     private String theaterName;
     private int theaterId;
+    private int showId;
 
-    // Constructor
+    public ShowResponse(LocalDate showDate, LocalTime showTime, String movieName, String theaterName, int theaterId,
+			int showId) {
+		super();
+		this.showDate = showDate;
+		this.showTime = showTime;
+		this.movieName = movieName;
+		this.theaterName = theaterName;
+		this.theaterId = theaterId;
+		this.showId = showId;
+	}
+
+	public int getShowId() {
+		return showId;
+	}
+
+	public void setShowId(int showId) {
+		this.showId = showId;
+	}
+
+	// Constructor
     public ShowResponse(){}
-
-    public ShowResponse(int theaterId,LocalDate showDate, LocalTime showTime, String movieName, String theaterName) {
-        this.showDate = showDate;
-        this.theaterId = theaterId;
-        this.showTime = showTime;
-        this.movieName = movieName;
-        this.theaterName = theaterName;
-    }
 
     // Getters
     public int getTheaterId() {return theaterId;}

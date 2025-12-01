@@ -5,18 +5,29 @@ public class AddUserRequest {
     private Integer age;
     private String emailId;
     private String mobileNo;
+    private String password;
 
     // Constructor
     public AddUserRequest() {}
 
-    public AddUserRequest(String name, Integer age, String emailId, String mobileNo) {
-        this.name = name;
-        this.age = age;
-        this.emailId = emailId;
-        this.mobileNo = mobileNo;
-    }
+    public AddUserRequest(String name, Integer age, String emailId, String mobileNo, String password) {
+		super();
+		this.name = name;
+		this.age = age;
+		this.emailId = emailId;
+		this.mobileNo = mobileNo;
+		this.password = password;
+	}
 
-    // Getter and Setter methods
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	// Getter and Setter methods
     public String getName() {
         return name;
     }

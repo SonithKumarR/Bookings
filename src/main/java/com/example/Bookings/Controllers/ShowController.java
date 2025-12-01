@@ -30,7 +30,7 @@ public class ShowController {
     }
 
     @GetMapping("/getshowSeats")
-    public ResponseEntity<?> getSeatsById(@RequestParam("showId") int showId){
+    public ResponseEntity<?> getSeatsById(@RequestParam("showId") String showId){
         List<ShowSeatResponse> showSeatResponseList=showService.getSeatsById(showId);
         return ResponseEntity.status(HttpStatus.OK).body(showSeatResponseList);
     }

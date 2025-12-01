@@ -17,6 +17,8 @@ public class User {
     private String emailId;
 
     private String mobileNo;
+    
+    private String password;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Ticket> ticketList;
@@ -25,16 +27,25 @@ public class User {
     public User() {}
 
     // All-args constructor
-    public User(int userId, String name, int age, String emailId, String mobileNo, List<Ticket> ticketList) {
+    public User(int userId, String name, int age, String emailId, String mobileNo, List<Ticket> ticketList,String password) {
         this.userId = userId;
         this.name = name;
         this.age = age;
         this.emailId = emailId;
         this.mobileNo = mobileNo;
         this.ticketList = ticketList;
+        this.password=password;
     }
 
-    // Getters and Setters
+    public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	// Getters and Setters
     public int getUserId() {
         return userId;
     }

@@ -23,6 +23,7 @@ public class MovieService {
         movie.setLanguage(movieRequest.getLanguage());
         movie.setReleaseDate(movieRequest.getReleaseDate());
         movie.setImage(movieRequest.getImage());
+        System.out.println(movieRequest.getMovieName()+" "+movieRequest.getDuration()+" "+movieRequest.getRating()+" "+movieRequest.getReleaseDate()+" ");
 
         movie = movieRepository.save(movie);
         return ""+movie.getMovieId();

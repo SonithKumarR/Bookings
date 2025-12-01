@@ -26,5 +26,6 @@ public class MovieController {
     public ResponseEntity<?> getMovies(){
         List<MovieResponse> movieResponseList = movieService.getMovies();
         return ResponseEntity.status(HttpStatus.OK).body(movieResponseList);
+        
     }
 }
